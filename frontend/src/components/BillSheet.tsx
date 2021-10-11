@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Bill, BillType, Category, Filter, Form } from "../types";
-import Filters from "./Filters";
+import BillFilters from "./Filters";
 import {
   toggleFormVisibility,
   changeFormTime,
@@ -46,12 +46,12 @@ export default function BillSheet(props: Props) {
         <input
           type="button"
           className="btn btn-primary"
-          value="添加账单"
+          value={form.visible ? "取消" : "添加账单"}
           onClick={onToggleFormVisibility}
         />
       </div>
-      {/* 过滤器 */}
-      <Filters filter={filter} billCategoryOptions={billCategoryOptions} />
+      {/* 筛选器 */}
+      <BillFilters filter={filter} billCategoryOptions={billCategoryOptions} />
       {/* 表单 */}
       <BillForm
         form={form}

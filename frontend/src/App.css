@@ -82,6 +82,7 @@ form>div:nth-last-child(1) {
 }
 /* select */
 .select {
+  text-align: center;
   outline: 0;
   border: 1px solid transparent;
   border-bottom: 1px dashed var(--primary-color);

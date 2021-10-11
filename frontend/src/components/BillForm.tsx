@@ -58,7 +58,7 @@ export default function BillForm(props: Props) {
   };
 
   return (
-    <div className={`form-wrapper${form.show ? " show" : ""}`}>
+    <div className={`form-wrapper${form.visible ? " show" : ""}`}>
       <form className="billform" onSubmit={onSubmit}>
         <DatePicker
           value={form.time}

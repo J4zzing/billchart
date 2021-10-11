@@ -1,8 +1,6 @@
 import React, { Component, PropsWithChildren } from "react";
 
-interface Props {
-  fallback: string;
-}
+interface Props { }
 
 interface State {
   hasError: boolean;
@@ -12,12 +10,10 @@ export default class ErrorBoundary extends Component<
   PropsWithChildren<Props>,
   State
 > {
-  constructor(props: Props) {
-    super(props);
-    this.state = {
-      hasError: false,
-    };
+  state = {
+    hasError: false,
   }
+
   static getDerivedStateFromError() {
     return { hasError: true };
   }
@@ -27,10 +23,10 @@ export default class ErrorBoundary extends Component<
   }
 
   render() {
-    const { children, fallback } = this.props;
+    const { children } = this.props;
 
     if (this.state.hasError) {
-      return <h1>{fallback || "Ops, Something went wrong."}</h1>;
+      return <h1>{"Oops! Something went wrong."}</h1>;
     }
     return children;
   }

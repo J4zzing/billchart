@@ -1,3 +1,11 @@
+import { BillType } from "../types";
+
+// 账单收支类型选项
+export const billTypeOptions = [
+  { name: "收入", value: BillType.Earn },
+  { name: "支出", value: BillType.Cost },
+];
+
 export const MONTHS = [
   "1月",
   "2月",

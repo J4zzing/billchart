@@ -6,7 +6,8 @@ import {
   changeFilterCategory,
   changeFilterType,
 } from "../actions";
-import { Filter, billTypeOptions } from "../types";
+import { Filter } from "../types";
+import { billTypeOptions } from "../utils/CONSTANT";
 import { DispatchContext } from "./App";
 
 interface Props {
@@ -14,7 +15,7 @@ interface Props {
   billCategoryOptions: SelectOption<string>[];
 }
 
-export default function Filters(props: Props) {
+export default function BillFilters(props: Props) {
   const { filter, billCategoryOptions } = props;
   const dispatch = useContext(DispatchContext);
 
@@ -24,13 +25,12 @@ export default function Filters(props: Props) {
         placeholder="选择时间"
         value={filter.time}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-          console.log(filter.time);
           dispatch(changeFilterTime(e.target.value));
         }}
       />
 
       <Select
-        defaultValue="所有类型"
+        defaultValue="所有账单类型"
         options={billCategoryOptions}
         value={filter.category || ""}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
@@ -39,7 +39,7 @@ export default function Filters(props: Props) {
       />
 
       <Select
-        defaultValue="收支"
+        defaultValue="所有收支类型"
         options={billTypeOptions}
         value={filter.type || ""}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {

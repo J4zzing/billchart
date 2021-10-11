@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useRef } from "react";
 import "../App.css";
 import BillSheet from "./BillSheet";
 import useBills from "../hooks/useBills";
@@ -9,7 +9,6 @@ import ErrorBoundary from "./ErrorBoundary";
 import CanvasChart from "./CanvasChart";
 import useRandomThemeColor from "../hooks/useRandomThemeColor";
 import { Action } from "../types";
-import useCounter from "../hooks/useCounter";
 
 const initialState = {
   filter: {},
@@ -24,7 +23,7 @@ export const DispatchContext = React.createContext<React.Dispatch<Action>>(
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const counter = useCounter();
+  const counter = useRef(0);
   const { bills, setBills, categories } = useBills(counter);
   const filteredBills = useFilteredBill(bills, categories, state.filter);
   const summary = useSummary(filteredBills);
@@ -33,7 +32,7 @@ function App() {
 
   return (
     <div id="App" style={randomThemeColor}>
-      <ErrorBoundary fallback="">
+      <ErrorBoundary>
         <CanvasChart
           id="summary-chart"
           title={`账单分类统计 - 总收入：￥${summary.income}，总支出：￥${summary.expenditure}`}

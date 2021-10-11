@@ -37,7 +37,6 @@ export const TOGGLE_FORM_VISIBILITY = "TOGGLE_FORM_VISIBILITY";
 export const toggleFormVisibility = () => {
   return {
     type: TOGGLE_FORM_VISIBILITY,
-    value: "",
   };
 };
 

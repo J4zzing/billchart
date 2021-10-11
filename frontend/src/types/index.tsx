@@ -7,7 +7,7 @@ export interface Bill {
   amount: number;
   [index: string]: any;
 }
-// 账单收支类型 花费或赚取
+// 账单收支类型 花费或收入
 export enum BillType {
   Cost,
   Earn,
@@ -30,7 +30,7 @@ export interface Filter {
 }
 // 新帐单的表单
 export interface Form extends Filter {
-  show?: boolean;
+  visible?: boolean;
 }
 // 收支统计
 export interface Summary {
@@ -41,10 +41,5 @@ export interface Summary {
 // reducer action
 export interface Action {
   type: string;
-  value: any;
+  value?: any;
 }
-// 账单收支类型选项
-export const billTypeOptions = [
-  { name: "支出", value: BillType.Cost },
-  { name: "收入", value: BillType.Earn },
-];

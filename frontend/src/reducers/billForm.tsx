@@ -16,8 +16,8 @@ export default function billForm(state: Form, action: Action): Form {
       const amount = action.value;
       return { ...state, amount };
     case TOGGLE_FORM_VISIBILITY:
-      const isShow = !state.show;
-      return { ...state, show: isShow };
+      const visible = !state.visible;
+      return { ...state, visible };
     default:
       return state;
   }
